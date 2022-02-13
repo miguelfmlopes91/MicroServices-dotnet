@@ -31,6 +31,8 @@ namespace PlatformService.Data
                     new Platform(){Name="Sql Server Express", Publisher="Microsoft", Cost = "Free"},
                     new Platform(){Name="Kubernetes", Publisher="Cloud Native", Cost = "Free"}
                 );
+
+                context.SaveChanges();
             }
             else
             {
