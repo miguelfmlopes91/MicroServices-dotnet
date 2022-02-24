@@ -18,7 +18,7 @@ namespace PlatformService.AsyncDataServices
             _configuration = configuration;
             var factory = new ConnectionFactory()
             {
-                HostName = _configuration["rabbitmq-clusterip-srv"],
+                HostName = _configuration["RabbitMQHost"],
                 Port = int.Parse(_configuration["RabbitMQPort"])
             };
 
