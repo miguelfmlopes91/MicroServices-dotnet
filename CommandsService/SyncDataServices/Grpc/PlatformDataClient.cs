@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using AutoMapper;
 using CommandsService.Models;
 using Grpc.Net.Client;
@@ -21,6 +23,8 @@ namespace CommandsService.SyncDataServices.Grpc
         
         public IEnumerable<Platform> ReturnAllPlatforms()
         {
+            //var noProxy = Environment.GetEnvironmentVariable("no_proxy");
+            //HttpClient.DefaultProxy = new WebProxy();
             Console.WriteLine($"-->  Calling GRPC service {_configuration["GrpcPlatform"]}");
             var channel = GrpcChannel.ForAddress(_configuration["GrpcPlatform"]);
             var client = new GrpcPlatform.GrpcPlatformClient(channel);
@@ -33,7 +37,7 @@ namespace CommandsService.SyncDataServices.Grpc
             }
             catch (Exception e)
             {
-                Console.WriteLine($" Could not call Grpc server {e.Message}");
+                Console.WriteLine($"--> Could not call Grpc server {e.Message}");
                 return null;
             }
         }
